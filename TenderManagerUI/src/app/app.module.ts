@@ -5,11 +5,13 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { OfferListComponent } from './offer-list/offer-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrganizersComponent } from './organizers/organizers.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    OfferListComponent
+    OfferListComponent,
+    OrganizersComponent
   ],
   imports: [
     BrowserModule,
