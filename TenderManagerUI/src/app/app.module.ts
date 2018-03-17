@@ -7,12 +7,14 @@ import { OfferListComponent } from './offer-list/offer-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConditionsComponent } from './conditions/conditions.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrganizersComponent } from './organizers/organizers.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OfferListComponent,
-    ConditionsComponent
+    ConditionsComponent,
+    OrganizersComponent
   ],
   imports: [
     BrowserModule,
