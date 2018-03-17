@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { OfferListComponent } from './offer-list/offer-list.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -13,6 +13,7 @@ import { OfferListComponent } from './offer-list/offer-list.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: 'offer-list', component: OfferListComponent },
       { path: '', component: OfferListComponent },
