@@ -6,6 +6,7 @@ import { Condition } from './models/condition';
 
 import 'rxjs/add/operator/mergeMap';
 import { Offer } from "./models/offer";
+import { DiscloseOffer } from "./models/discloseoffer";
 
 @Injectable()
 export class HyperLedgerService {
@@ -37,6 +38,11 @@ export class HyperLedgerService {
     public saveOffer(offer: any): Observable<Offer>{
         const url = 'http://localhost:3000/api/SubmitOffer';
         return this.httpClient.post<Offer>(url, offer, { headers: this.getHeaders()});
+    }
+
+    public discloseOffer(discloseOffer: any): Observable<DiscloseOffer>{
+        const url = 'http://localhost:3000/api/DiscloseOffer';
+        return this.httpClient.post<DiscloseOffer>(url, discloseOffer, { headers: this.getHeaders()});
     }
 
     public deleteOffers() {

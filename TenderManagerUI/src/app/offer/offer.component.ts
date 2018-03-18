@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Offer } from "../models/offer";
 import { HyperLedgerService } from "../services";
+import { DiscloseOffer } from "../models/discloseoffer";
 
 @Component({
   selector: 'app-offer',
@@ -70,6 +71,33 @@ export class OfferComponent implements OnInit {
   deleteOffers() {
     this.offers = new Array();
     this.service.deleteOffers();
+  }
+
+  discloseOffer1(){
+    const discloseOffer = new DiscloseOffer();
+    discloseOffer.offer = 'resource:org.example.biznet.Offer#1';
+    discloseOffer.privateKey = 'DSA@!#SDASDQWDQWSDZC@$@!#12312321das';
+    this.service.discloseOffer(discloseOffer).subscribe(data => {
+      this.offer1.privateKey = data.privateKey;
+    });
+  }
+
+  discloseOffer2(){
+    const discloseOffer = new DiscloseOffer();
+    discloseOffer.offer = 'resource:org.example.biznet.Offer#2';
+    discloseOffer.privateKey = 'DSA@!#SDASDQWDQWSDZC@$@!#12312321das';
+    this.service.discloseOffer(discloseOffer).subscribe(data => {
+      this.offer2.privateKey = data.privateKey;
+    });
+  }
+
+  discloseOffer3(){
+    const discloseOffer = new DiscloseOffer();
+    discloseOffer.offer = 'resource:org.example.biznet.Offer#3';
+    discloseOffer.privateKey = 'DSA@!#SDASDQWDQWSDZC@$@!#12312321das';
+    this.service.discloseOffer(discloseOffer).subscribe(data => {
+      this.offer3.privateKey = data.privateKey;
+    });
   }
 
 }
