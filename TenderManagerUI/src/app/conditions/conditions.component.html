@@ -3,6 +3,7 @@
         <div class="col-12 list-header">
           <h3>Conditions</h3>
         </div>
+        <div class="col-md-4 col-sm-4 col-12">
         <form [formGroup]="conditionForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label class="center-block">Description: Tender for building something
@@ -22,5 +23,23 @@
           </div>
           <button type="submit" class="btn btn-success">Save</button>
         </form>
+        </div>
+        <div class="col-md-4 offset-md-6 col-sm-4 offset-sm-6 col-12">
+          <div class="form-group" *ngIf='currentCondition'>
+            <label>
+              {{currentCondition.closedForOffersTimestamp}}
+            </label>
+            <label>
+              {{currentCondition.description}}
+              </label>
+            <label>
+              {{currentCondition.openedForOffersTimestamp}}
+              </label>
+            <label>
+              {{currentCondition.tenderFinishedTimestamp}}
+              </label>
+          </div>
     </div>
+    </div>
+    
 </div>

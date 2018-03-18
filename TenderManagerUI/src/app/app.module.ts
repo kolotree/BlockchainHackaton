@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OrganizersComponent } from './organizers/organizers.component';
 import { OrganizerService } from './organizers/organizer.service';
 import { HttpClientModule } from '@angular/common/http';
+import { HyperLedgerService } from "./services";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
       { path: '**', redirectTo: '', pathMatch: 'full' }
     ])
   ],
-  providers: [OrganizerService],
+  providers: [OrganizerService, HyperLedgerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
