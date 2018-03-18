@@ -1,3 +1,12 @@
+.container-fluid {
+    background-image: url("../assets/images/blockchain9.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 700px;
+    max-width: 100%;
+    background-attachment: fixed;
+}
+
 .list-container {
     width: 100%;
     min-height: 200px;
@@ -13,5 +22,5 @@
 }
 .list-header h3 {
     font-family: "Roboto-Bold";
-    color: #33cc33;
+    color: #37425e;
 }
