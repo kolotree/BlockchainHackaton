@@ -5,6 +5,8 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { OfferListComponent } from './offer-list/offer-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ConditionsComponent } from './conditions/conditions.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { OrganizersComponent } from './organizers/organizers.component';
 import { OrganizerService } from './organizers/organizer.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,12 +15,17 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     OfferListComponent,
+    ConditionsComponent,
     OrganizersComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+<<<<<<< HEAD
     HttpClientModule,
+=======
+    ReactiveFormsModule,
+>>>>>>> 88274b042914cbfdfd2b31cefde767121e583833
     RouterModule.forRoot([
       { path: 'offer-list', component: OfferListComponent },
       { path: '', component: OfferListComponent },
