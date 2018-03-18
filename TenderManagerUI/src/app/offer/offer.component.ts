@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Offer } from "../models/offer";
 import { HyperLedgerService } from "../services";
 import { DiscloseOffer } from "../models/discloseoffer";
-
-/// <reference types="crypto-js" />
-import * as CryptoJS from 'crypto-js';
+import { Encryption } from "../helpers/encryption";
 
 
 @Component({
@@ -43,7 +41,7 @@ export class OfferComponent implements OnInit {
     const offer1 = new Offer();
     offer1.$class = "org.example.biznet.SubmitOffer"
     offer1.offerId = '1';
-    offer1.encryptedDescription = this.encryptData("Moja ponuda je 300 evra",
+    offer1.encryptedDescription = Encryption.encryptData("Moja ponuda je 300 evra",
                                   this.offer1PrivateKey);
     offer1.participient = "resource:org.example.biznet.Participient#1"
     return offer1;
@@ -64,7 +62,7 @@ export class OfferComponent implements OnInit {
     const offer1 = new Offer();
     offer1.$class = "org.example.biznet.SubmitOffer"
     offer1.offerId = '2';
-    offer1.encryptedDescription = this.encryptData("Moja ponuda je 7000 evra",
+    offer1.encryptedDescription = Encryption.encryptData("Moja ponuda je 7000 evra",
                                   this.offer2PrivateKey);
     offer1.participient = "resource:org.example.biznet.Participient#2"
     return offer1;
@@ -85,7 +83,7 @@ export class OfferComponent implements OnInit {
     const offer1 = new Offer();
     offer1.$class = "org.example.biznet.SubmitOffer"
     offer1.offerId = '3';
-    offer1.encryptedDescription = this.encryptData("Moja ponuda je 3000 evra",
+    offer1.encryptedDescription = Encryption.encryptData("Moja ponuda je 3000 evra",
                                   this.offer3PrivateKey);
     offer1.participient = "resource:org.example.biznet.Participient#3"
     return offer1;
@@ -110,12 +108,12 @@ export class OfferComponent implements OnInit {
   discloseOffer1(){
     const discloseOffer = new DiscloseOffer();
     discloseOffer.offer = 'resource:org.example.biznet.Offer#1';
-    discloseOffer.privateKey = 'DSA@!#SDASDQWDQWSDZC@$@!#12312321das';
+    discloseOffer.privateKey = this.offer1PrivateKey;
     this.service.discloseOffer(discloseOffer).subscribe(data => {
       this.offer1.privateKey = data.privateKey;
       this.offer1SubmitError = null;
       this.offer1SubmitMessage = "Decryption key accepted";
-      this.offer1.decryptedDescription = this.decryptData(this.offer1.encryptedDescription,
+      this.offer1.decryptedDescription = Encryption.decryptData(this.offer1.encryptedDescription,
                                                           this.offer1PrivateKey);
     }, error => {
       this.offer1SubmitError = 'Submiting period expired. Decryption key rejected!';
@@ -126,12 +124,12 @@ export class OfferComponent implements OnInit {
   discloseOffer2(){
     const discloseOffer = new DiscloseOffer();
     discloseOffer.offer = 'resource:org.example.biznet.Offer#2';
-    discloseOffer.privateKey = 'DSA@!#SDASDQWDQWSDZC@$@!#12312321das';
+    discloseOffer.privateKey = this.offer2PrivateKey;
     this.service.discloseOffer(discloseOffer).subscribe(data => {
       this.offer2.privateKey = data.privateKey;
       this.offer2SubmitError = null;
       this.offer2SubmitMessage = "Decryption key accepted";
-      this.offer2.decryptedDescription = this.decryptData(this.offer2.encryptedDescription,
+      this.offer2.decryptedDescription = Encryption.decryptData(this.offer2.encryptedDescription,
                                                           this.offer2PrivateKey);
     }, error => {
       this.offer2SubmitError = 'Submiting period expired. Decryption key rejected!';
@@ -142,38 +140,17 @@ export class OfferComponent implements OnInit {
   discloseOffer3(){
     const discloseOffer = new DiscloseOffer();
     discloseOffer.offer = 'resource:org.example.biznet.Offer#3';
-    discloseOffer.privateKey = 'DSA@!#SDASDQWDQWSDZC@$@!#12312321das';
+    discloseOffer.privateKey = this.offer3PrivateKey;
     this.service.discloseOffer(discloseOffer).subscribe(data => {
       this.offer3.privateKey = data.privateKey;
       this.offer3SubmitError = null;
       this.offer3SubmitMessage = "Decryption key accepted";
-      this.offer3.decryptedDescription = this.decryptData(this.offer3.encryptedDescription,
+      this.offer3.decryptedDescription = Encryption.decryptData(this.offer3.encryptedDescription,
                                                           this.offer3PrivateKey);
     }, error => {
       this.offer3SubmitError = 'Submiting period expired. Decryption key rejected!';
       this.offer3SubmitMessage = null;
     });
-  }
-
-  encryptData(data: string, key: string): string {
-    var encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(data), key,
-    {
-        keySize: 128 / 8,
-        iv: key,
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7
-    });
-    return encrypted.toString();
-  }
-
-  decryptData(encryptedData: string, key: string): string {
-    var decrypted = CryptoJS.AES.decrypt(encryptedData, key, {
-        keySize: 128 / 8,
-        iv: key,
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7
-    });
-    return decrypted.toString(CryptoJS.enc.Utf8);
   }
 
 }

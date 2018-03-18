@@ -4,11 +4,10 @@
     margin-top: 50px;
     float: left;
 }
-
 .list-container-inner {
     box-shadow: 4px 4px 6px #808080;
-    min-height: 200px;
     border-radius: 5px;
+    min-height: 200px;
     padding: 15px;
     background-color: rgba(255, 255, 255, 0.5);
 }
@@ -22,15 +21,4 @@
     font-family: "Roboto-Bold";
     color: #37425e;
     font-size: 25px;
-}
-
-
-.offer {
-    padding-bottom: 20px;
-    border-bottom: 1px solid #8f9cbd;
-}
-
-.center-block {
-    width: 100%;
-    word-wrap: break-word;
 }

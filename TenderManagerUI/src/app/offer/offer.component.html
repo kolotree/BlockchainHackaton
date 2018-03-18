@@ -93,22 +93,5 @@
 
     <br>
 
-    <div class="offer">
-      <div class="form-group">
-        <label class="center-block">Offers in chain
-        </label>
-        <button class="btn btn-danger" (click)="deleteOffers()">Delete Offers</button>
-      </div>
-      <div *ngFor="let offer of offers">
-        <div class="form-group">
-          <label class="center-block">Id: {{offer.offerId}}
-          </label>
-        </div>
-        <div class="form-group">
-          <label class="center-block">Offer encrypted text: {{offer.encryptedDescription}}
-          </label>
-        </div>
-      </div>
-    </div>
   </div>
 </div>

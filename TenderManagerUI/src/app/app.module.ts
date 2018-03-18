@@ -13,6 +13,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { HyperLedgerService } from "./services";
 import { OfferComponent } from './offer/offer.component';
 import { ParticipantsComponent } from './participants/participants.component';
+import { TenderOverviewComponent } from './tender-overview/tender-overview.component';
+import { HomeComponent } from './home/home.component';
+import { Encryption } from "./helpers/encryption";
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { ParticipantsComponent } from './participants/participants.component';
     ConditionsComponent,
     OrganizersComponent,
     OfferComponent,
-    ParticipantsComponent
+    ParticipantsComponent,
+    TenderOverviewComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -28,12 +33,13 @@ import { ParticipantsComponent } from './participants/participants.component';
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
+      { path: 'overview', component: TenderOverviewComponent},
       { path: 'organizers', component: OrganizersComponent },
-      { path: '', component: OrganizersComponent },
+      { path: '', component: HomeComponent },
       { path: '**', redirectTo: '', pathMatch: 'full' }
     ])
   ],
-  providers: [OrganizerService, ParticipantService, HyperLedgerService],
+  providers: [OrganizerService, ParticipantService, HyperLedgerService, Encryption],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

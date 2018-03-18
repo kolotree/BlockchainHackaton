@@ -52,6 +52,11 @@ export class HyperLedgerService {
         this.httpClient.delete(url + '/3', { headers: this.getHeaders()}).subscribe();
     }
 
+    public getAllOffers(): Observable<Offer[]> {
+        const url = 'http://localhost:3000/api/Offer';
+        return this.httpClient.get<Array<Offer>>(url, { headers: this.getHeaders()})
+    }
+
     getHeaders() {
         const headers = new HttpHeaders();
         return headers.set('Content-Type', 'application/json');
