@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Observable } from "rxjs/Observable";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
-import { Condition } from "./models/condition";
+import { Condition } from './models/condition';
 
 import 'rxjs/add/operator/mergeMap';
 import { Offer } from "./models/offer";
@@ -10,25 +10,28 @@ import { Offer } from "./models/offer";
 @Injectable()
 export class HyperLedgerService {
 
+    conditionsUrl = 'http://localhost:3000/api/Conditions'
+
     constructor(private httpClient: HttpClient) {
 
     }
 
     public getCondition(): Observable<Condition> {
-        const conditionsUrl = 'http://localhost:3000/api/Conditions/1';
-        return this.httpClient.get<Condition>(conditionsUrl, { headers: this.getHeaders()});
+        return this.httpClient.get<Condition>(this.conditionsUrl + '/1', { headers: this.getHeaders() });
     }
 
     public deleteCondition(): Observable<Object> {
-        const conditionsUrl = 'http://localhost:3000/api/Conditions';
-        return this.httpClient.delete(conditionsUrl + '/1');
+        return this.httpClient.delete(this.conditionsUrl + '/1');
     }
 
-    public saveCondition(conditon: any): Observable<Object>{
-        const conditionsUrl = 'http://localhost:3000/api/Conditions';
-        return this.deleteCondition()
-                   .flatMap(v => this.httpClient
-                                     .post(conditionsUrl, conditon, { headers: this.getHeaders()}));
+    public saveCondition(conditon: Condition, currentCondition): Observable<Condition> {
+        if (currentCondition) {
+            return this.deleteCondition()
+                .flatMap(v => this.httpClient
+                    .post<Condition>(this.conditionsUrl, conditon, { headers: this.getHeaders() }));
+        } else {
+            return this.httpClient.post<Condition>(this.conditionsUrl, conditon, { headers: this.getHeaders() });
+        }
     }
 
     public saveOffer(offer: any): Observable<Offer>{

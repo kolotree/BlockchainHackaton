@@ -9,9 +9,11 @@ import { ConditionsComponent } from './conditions/conditions.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrganizersComponent } from './organizers/organizers.component';
 import { OrganizerService } from './organizers/organizer.service';
+import { ParticipantService } from './participants/participant.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HyperLedgerService } from "./services";
 import { OfferComponent } from './offer/offer.component';
+import { ParticipantsComponent } from './participants/participants.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { OfferComponent } from './offer/offer.component';
     OfferListComponent,
     ConditionsComponent,
     OrganizersComponent,
-    OfferComponent
+    OfferComponent,
+    ParticipantsComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import { OfferComponent } from './offer/offer.component';
       { path: '**', redirectTo: '', pathMatch: 'full' }
     ])
   ],
-  providers: [OrganizerService, HyperLedgerService],
+  providers: [OrganizerService, ParticipantService, HyperLedgerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
