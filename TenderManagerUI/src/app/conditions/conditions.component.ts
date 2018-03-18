@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import { HyperLedgerService } from '../services';
+import { Condition } from '../models/condition';
 
 @Component({
   selector: 'app-conditions',
@@ -21,10 +23,18 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
 export class ConditionsComponent implements OnInit {
 
   conditionForm: FormGroup;
+  currentCondition: Condition;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private service: HyperLedgerService) { }
 
   ngOnInit() {
+
+    this.service.getCondition().subscribe(data => {
+      this.currentCondition = data;
+      console.log(data);
+    });
+
     this.conditionForm = this.fb.group(
       {
       }
@@ -42,6 +52,7 @@ export class ConditionsComponent implements OnInit {
     formModel.organizer = 'resource:org.example.biznet.Organizer#1'
     formModel.$class = 'org.example.biznet.Conditions',
     console.log(formModel);
+    this.service.saveCondition(formModel).subscribe(data => {});
   }
 
 }
