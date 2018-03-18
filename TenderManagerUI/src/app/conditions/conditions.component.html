@@ -5,21 +5,19 @@
         </div>
         <form [formGroup]="conditionForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label class="center-block">Opene Time:
-              <input type="time" 
-                [value]="date"
-                (input)="date = $event.target.valueAsDate"
-                formControlName="openedForOffersTimestamp" />
+            <label class="center-block">Description: Tender for building something
             </label>
           </div>
           <div class="form-group">
-            <label class="center-block">Close Time:
-              <input class="form-control" formControlName="closedForOffersTimestamp">
+            <label class="center-block">Open Time: Now
             </label>
           </div>
           <div class="form-group">
-            <label class="center-block">Tender Finish Time:
-              <input class="form-control" formControlName="tenderFinishedTimestamp">
+            <label class="center-block">Close Time: +30 sec
+            </label>
+          </div>
+          <div class="form-group">
+            <label class="center-block">Tender Finish Time: +60 sec
             </label>
           </div>
           <button type="submit" class="btn btn-success">Save</button>
