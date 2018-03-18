@@ -12,6 +12,7 @@ import { OrganizerService } from './organizers/organizer.service';
 import { ParticipantService } from './participants/participant.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ParticipantsComponent } from './participants/participants.component';
+import { HyperLedgerService } from './services';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { ParticipantsComponent } from './participants/participants.component';
       { path: '**', redirectTo: '', pathMatch: 'full' }
     ])
   ],
-  providers: [OrganizerService, ParticipantService],
+  providers: [OrganizerService, ParticipantService, HyperLedgerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
