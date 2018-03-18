@@ -1,3 +1,10 @@
-<p>
-  organizers works!
-</p>
+<table>
+  <tr>
+    <th>Organizer ID</th>
+    <th>Organizer Name</th>    
+  </tr>
+  <tr *ngFor='let organizer of organizers'>
+    <td>{{ organizer.organizerId }}</td>
+    <td>{{ organizer.name }}</td>
+  </tr>
+</table>
