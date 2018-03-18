@@ -3,6 +3,10 @@ import { Offer } from "../models/offer";
 import { HyperLedgerService } from "../services";
 import { DiscloseOffer } from "../models/discloseoffer";
 
+/// <reference types="crypto-js" />
+import * as CryptoJS from 'crypto-js';
+
+
 @Component({
   selector: 'app-offer',
   templateUrl: './offer.component.html',
@@ -14,12 +18,17 @@ export class OfferComponent implements OnInit {
   offer1: Offer;
   offer1SubmitError = null;
   offer1SubmitMessage = null;
+  offer1PrivateKey = 'sahdiuhqwid';
+
   offer2: Offer;
   offer2SubmitError = null;
   offer2SubmitMessage = null;
+  offer2PrivateKey = 'wqy9yd2198dhwd';
+
   offer3: Offer;
   offer3SubmitError = null;
   offer3SubmitMessage = null;
+  offer3PrivateKey = 'lasdoh19hdhaskjd';
 
   constructor(private service: HyperLedgerService) { }
 
@@ -34,7 +43,8 @@ export class OfferComponent implements OnInit {
     const offer1 = new Offer();
     offer1.$class = "org.example.biznet.SubmitOffer"
     offer1.offerId = '1';
-    offer1.encryptedDescription = "Moja ponuda je 300 evra";
+    offer1.encryptedDescription = this.encryptData("Moja ponuda je 300 evra",
+                                  this.offer1PrivateKey);
     offer1.participient = "resource:org.example.biznet.Participient#1"
     return offer1;
   }
@@ -54,7 +64,8 @@ export class OfferComponent implements OnInit {
     const offer1 = new Offer();
     offer1.$class = "org.example.biznet.SubmitOffer"
     offer1.offerId = '2';
-    offer1.encryptedDescription = "Moja ponuda je 7000 evra";
+    offer1.encryptedDescription = this.encryptData("Moja ponuda je 7000 evra",
+                                  this.offer2PrivateKey);
     offer1.participient = "resource:org.example.biznet.Participient#2"
     return offer1;
   }
@@ -74,7 +85,8 @@ export class OfferComponent implements OnInit {
     const offer1 = new Offer();
     offer1.$class = "org.example.biznet.SubmitOffer"
     offer1.offerId = '3';
-    offer1.encryptedDescription = "Moja ponuda je 3000 evra";
+    offer1.encryptedDescription = this.encryptData("Moja ponuda je 3000 evra",
+                                  this.offer3PrivateKey);
     offer1.participient = "resource:org.example.biznet.Participient#3"
     return offer1;
   }
@@ -103,6 +115,8 @@ export class OfferComponent implements OnInit {
       this.offer1.privateKey = data.privateKey;
       this.offer1SubmitError = null;
       this.offer1SubmitMessage = "Decryption key accepted";
+      this.offer1.decryptedDescription = this.decryptData(this.offer1.encryptedDescription,
+                                                          this.offer1PrivateKey);
     }, error => {
       this.offer1SubmitError = 'Submiting period expired. Decryption key rejected!';
       this.offer1SubmitMessage = null;
@@ -117,6 +131,8 @@ export class OfferComponent implements OnInit {
       this.offer2.privateKey = data.privateKey;
       this.offer2SubmitError = null;
       this.offer2SubmitMessage = "Decryption key accepted";
+      this.offer2.decryptedDescription = this.decryptData(this.offer2.encryptedDescription,
+                                                          this.offer2PrivateKey);
     }, error => {
       this.offer2SubmitError = 'Submiting period expired. Decryption key rejected!';
       this.offer2SubmitMessage = null;
@@ -131,10 +147,33 @@ export class OfferComponent implements OnInit {
       this.offer3.privateKey = data.privateKey;
       this.offer3SubmitError = null;
       this.offer3SubmitMessage = "Decryption key accepted";
+      this.offer3.decryptedDescription = this.decryptData(this.offer3.encryptedDescription,
+                                                          this.offer3PrivateKey);
     }, error => {
       this.offer3SubmitError = 'Submiting period expired. Decryption key rejected!';
       this.offer3SubmitMessage = null;
     });
+  }
+
+  encryptData(data: string, key: string): string {
+    var encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(data), key,
+    {
+        keySize: 128 / 8,
+        iv: key,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+    });
+    return encrypted.toString();
+  }
+
+  decryptData(encryptedData: string, key: string): string {
+    var decrypted = CryptoJS.AES.decrypt(encryptedData, key, {
+        keySize: 128 / 8,
+        iv: key,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7
+    });
+    return decrypted.toString(CryptoJS.enc.Utf8);
   }
 
 }

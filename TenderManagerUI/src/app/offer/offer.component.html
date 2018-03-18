@@ -16,6 +16,11 @@
         <label class="center-block">Offer encrypted text: {{offer1.encryptedDescription}}
         </label>
       </div>
+      <div class="form-group">
+        <label class="center-block">
+          Decrypted text: {{offer1.decryptedDescription}}
+        </label>
+      </div>
       <button (click)="saveOffer1()" class="btn btn-success">Save</button>
       <button (click)="discloseOffer1()" class="btn btn-success">Decrypt Offer</button>
       <div class="alert alert-danger" *ngIf="offer1SubmitError">
@@ -41,6 +46,11 @@
         <label class="center-block">Offer encrypted text: {{offer2.encryptedDescription}}
         </label>
       </div>
+      <div class="form-group">
+        <label class="center-block">
+          Decrypted text: {{offer2.decryptedDescription}}
+        </label>
+      </div>
       <button (click)="saveOffer2()" class="btn btn-success">Save</button>
       <button (click)="discloseOffer2()" class="btn btn-success">Decrypt Offer</button>
       <div class="alert alert-danger" *ngIf="offer2SubmitError">
@@ -64,6 +74,11 @@
       </div>
       <div class="form-group">
         <label class="center-block">Offer encrypted text: {{offer3.encryptedDescription}}
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="center-block">
+          Decrypted text: {{offer3.decryptedDescription}}
         </label>
       </div>
       <button (click)="saveOffer3()" class="btn btn-success">Save</button>
