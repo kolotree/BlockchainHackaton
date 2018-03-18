@@ -1,82 +1,81 @@
-<div class="container">
-  <div class="col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-12 list-container">
+<div class="col-md-5 offset-md-1 col-sm-8 offset-sm-2 col-12 list-container">
+  <div class="list-container-inner">
     <div class="col-12 list-header">
       <h3>Offers</h3>
     </div>
-    <div>
-        <div class="form-group">
-          <label class="center-block">Offer #1
-            </label>
-        </div>
-        <div class="form-group">
-          <label class="center-block">Id: {{offer1.offerId}}
-            </label>
-        </div>
-        <div class="form-group">
-          <label class="center-block">Offer encrypted text: {{offer1.encryptedDescription}}
-            </label>
-        </div>
-        <button (click)="saveOffer1()" class="btn btn-success">Save</button>
-        <button (click)="discloseOffer1()" class="btn btn-success">Decrypt Offer</button>
+    <div class="offer">
+      <div class="form-group">
+        <label class="center-block"><strong>Offer #1</strong>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="center-block">Id: {{offer1.offerId}}
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="center-block">Offer encrypted text: {{offer1.encryptedDescription}}
+        </label>
+      </div>
+      <button (click)="saveOffer1()" class="btn btn-success">Save</button>
+      <button (click)="discloseOffer1()" class="btn btn-success">Decrypt Offer</button>
     </div>
 
     <br>
 
-    <div>
-        <div class="form-group">
-          <label class="center-block">Offer #2
-            </label>
-        </div>
-        <div class="form-group">
-          <label class="center-block">Id: {{offer2.offerId}}
-            </label>
-        </div>
-        <div class="form-group">
-          <label class="center-block">Offer encrypted text: {{offer2.encryptedDescription}}
-            </label>
-        </div>
-        <button (click)="saveOffer2()" class="btn btn-success">Save</button>
-        <button (click)="discloseOffer2()" class="btn btn-success">Decrypt Offer</button>
+    <div class="offer">
+      <div class="form-group">
+        <label class="center-block"><strong>Offer #2</strong>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="center-block">Id: {{offer2.offerId}}
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="center-block">Offer encrypted text: {{offer2.encryptedDescription}}
+        </label>
+      </div>
+      <button (click)="saveOffer2()" class="btn btn-success">Save</button>
+      <button (click)="discloseOffer2()" class="btn btn-success">Decrypt Offer</button>
     </div>
 
     <br>
 
-    <div>
-        <div class="form-group">
-          <label class="center-block">Offer #3
-            </label>
-        </div>
-        <div class="form-group">
-          <label class="center-block">Id: {{offer3.offerId}}
-            </label>
-        </div>
-        <div class="form-group">
-          <label class="center-block">Offer encrypted text: {{offer3.encryptedDescription}}
-            </label>
-        </div>
-        <button (click)="saveOffer3()" class="btn btn-success">Save</button>
-        <button (click)="discloseOffer3()" class="btn btn-success">Decrypt Offer</button>
+    <div class="offer">
+      <div class="form-group">
+        <label class="center-block"><strong>Offer #3</strong>
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="center-block">Id: {{offer3.offerId}}
+        </label>
+      </div>
+      <div class="form-group">
+        <label class="center-block">Offer encrypted text: {{offer3.encryptedDescription}}
+        </label>
+      </div>
+      <button (click)="saveOffer3()" class="btn btn-success">Save</button>
+      <button (click)="discloseOffer3()" class="btn btn-success">Decrypt Offer</button>
     </div>
 
     <br>
 
-    <div>
+    <div class="offer">
+      <div class="form-group">
+        <label class="center-block">Offers in chain
+        </label>
+        <button class="btn btn-danger" (click)="deleteOffers()">Delete Offers</button>
+      </div>
+      <div *ngFor="let offer of offers">
         <div class="form-group">
-          <label class="center-block">Offers in chain
-            </label>
-            <button (click)="deleteOffers()">Delete Offers</button>
+          <label class="center-block">Id: {{offer.offerId}}
+          </label>
         </div>
-        <div *ngFor="let offer of offers">
-          <div class="form-group">
-            <label class="center-block">Id: {{offer.offerId}}
-              </label>
-          </div>
-          <div class="form-group">
-            <label class="center-block">Offer encrypted text: {{offer.encryptedDescription}}
-              </label>
-          </div>
-          </div>
+        <div class="form-group">
+          <label class="center-block">Offer encrypted text: {{offer.encryptedDescription}}
+          </label>
+        </div>
+      </div>
     </div>
   </div>
-
 </div>
