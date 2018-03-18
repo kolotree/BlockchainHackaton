@@ -1,45 +1,48 @@
 <div class="container">
-    <div class="col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-12 list-container">
-        <div class="col-12 list-header">
-          <h3>Conditions</h3>
+  <div class="col-md-8 offset-md-2 col-sm-8 offset-sm-2 col-12 list-container" style="min-height: 400px;">
+    <div class="col-12 list-header">
+      <h3>Conditions</h3>
+    </div>
+    <div style="width: 45%; float: left">
+      <form [formGroup]="conditionForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label class="center-block">Description: Tender for building something
+            </label>
         </div>
-        <div class="col-md-4 col-sm-4 col-12">
-        <form [formGroup]="conditionForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <label class="center-block">Description: Tender for building something
+        <div class="form-group">
+          <label class="center-block">Open Time: Now
             </label>
-          </div>
-          <div class="form-group">
-            <label class="center-block">Open Time: Now
-            </label>
-          </div>
-          <div class="form-group">
-            <label class="center-block">Close Time: +30 sec
-            </label>
-          </div>
-          <div class="form-group">
-            <label class="center-block">Tender Finish Time: +60 sec
-            </label>
-          </div>
-          <button type="submit" class="btn btn-success">Save</button>
-        </form>
         </div>
-        <div class="col-md-4 offset-md-6 col-sm-4 offset-sm-6 col-12">
-          <div class="form-group" *ngIf='currentCondition'>
-            <label>
-              {{currentCondition.closedForOffersTimestamp}}
+        <div class="form-group">
+          <label class="center-block">Close Time: +30 sec
             </label>
-            <label>
+        </div>
+        <div class="form-group">
+          <label class="center-block">Tender Finish Time: +60 sec
+            </label>
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+      </form>
+    </div>
+    <div style="width: 45%; float: right">
+      <div class="form-group" *ngIf='currentCondition'>
+        <label>
               {{currentCondition.description}}
               </label>
-            <label>
+        <label>
               {{currentCondition.openedForOffersTimestamp}}
               </label>
-            <label>
+        <label>
+              {{currentCondition.closedForOffersTimestamp}}
+            </label>
+
+        <label>
               {{currentCondition.tenderFinishedTimestamp}}
               </label>
-          </div>
+      </div>
     </div>
-    </div>
-    
+  </div>
+
 </div>
+
+<app-offer></app-offer>

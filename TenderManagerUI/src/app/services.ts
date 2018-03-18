@@ -5,6 +5,7 @@ import { Observable } from "rxjs/Observable";
 import { Condition } from "./models/condition";
 
 import 'rxjs/add/operator/mergeMap';
+import { Offer } from "./models/offer";
 
 @Injectable()
 export class HyperLedgerService {
@@ -25,11 +26,21 @@ export class HyperLedgerService {
 
     public saveCondition(conditon: any): Observable<Object>{
         const conditionsUrl = 'http://localhost:3000/api/Conditions';
-        // return this.httpClient.post(conditionsUrl, conditon, { headers: this.getHeaders()});
-        
         return this.deleteCondition()
                    .flatMap(v => this.httpClient
                                      .post(conditionsUrl, conditon, { headers: this.getHeaders()}));
+    }
+
+    public saveOffer(offer: any): Observable<Offer>{
+        const url = 'http://localhost:3000/api/SubmitOffer';
+        return this.httpClient.post<Offer>(url, offer, { headers: this.getHeaders()});
+    }
+
+    public deleteOffers() {
+        const url = 'http://localhost:3000/api/Offer';
+        this.httpClient.delete(url + '/1', { headers: this.getHeaders()}).subscribe();
+        this.httpClient.delete(url + '/2', { headers: this.getHeaders()}).subscribe();
+        this.httpClient.delete(url + '/3', { headers: this.getHeaders()}).subscribe();
     }
 
     getHeaders() {

@@ -39,7 +39,7 @@ export class ConditionsComponent implements OnInit {
     formModel.description = 'Tender description';
     formModel.organizer = 'resource:org.example.biznet.Organizer#1'
     formModel.$class = 'org.example.biznet.Conditions',
-    console.log(formModel);
+
     this.service.saveCondition(formModel).subscribe(data => {});
   }
 

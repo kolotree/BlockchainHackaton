@@ -11,13 +11,15 @@ import { OrganizersComponent } from './organizers/organizers.component';
 import { OrganizerService } from './organizers/organizer.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HyperLedgerService } from "./services";
+import { OfferComponent } from './offer/offer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OfferListComponent,
     ConditionsComponent,
-    OrganizersComponent
+    OrganizersComponent,
+    OfferComponent
   ],
   imports: [
     BrowserModule,
