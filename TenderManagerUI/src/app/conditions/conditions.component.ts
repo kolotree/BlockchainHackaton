@@ -45,14 +45,16 @@ export class ConditionsComponent implements OnInit {
     const formModel = this.conditionForm.value;
     const now = new Date();
     formModel.openedForOffersTimestamp = now;
-    formModel.closedForOffersTimestamp = new Date(now.getTime() + 30*1000);
-    formModel.tenderFinishedTimestamp = new Date(now.getTime() + 60*1000);
+    formModel.closedForOffersTimestamp = new Date(now.getTime() + 30 * 1000);
+    formModel.tenderFinishedTimestamp = new Date(now.getTime() + 60 * 1000);
     formModel.conditionsId = '1';
     formModel.description = 'Tender description';
-    formModel.organizer = 'resource:org.example.biznet.Organizer#1'
+    formModel.organizer = 'resource:org.example.biznet.Organizer#1';
     formModel.$class = 'org.example.biznet.Conditions',
     console.log(formModel);
-    this.service.saveCondition(formModel).subscribe(data => {});
+    this.service.saveCondition(formModel).subscribe(data => {
+      this.currentCondition = data;
+    });
   }
 
 }
