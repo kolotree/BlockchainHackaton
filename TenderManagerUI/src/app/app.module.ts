@@ -21,11 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-<<<<<<< HEAD
     HttpClientModule,
-=======
     ReactiveFormsModule,
->>>>>>> 88274b042914cbfdfd2b31cefde767121e583833
     RouterModule.forRoot([
       { path: 'offer-list', component: OfferListComponent },
       { path: '', component: OfferListComponent },
