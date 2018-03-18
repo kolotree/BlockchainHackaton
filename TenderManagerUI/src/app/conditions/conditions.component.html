@@ -21,7 +21,7 @@
                     </tr>
                     <tr>
                       <td><strong>Tender finished:</strong></td>
-                      <td>60s</td>
+                      <td><h2>{{countDown | async}}</h2></td>
                       <td *ngIf='currentCondition'>{{currentCondition.tenderFinishedTimestamp | date:'mediumTime'}}</td>
                     </tr>
                     <tr>

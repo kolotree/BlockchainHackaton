@@ -12,8 +12,14 @@ export class OfferComponent implements OnInit {
 
   offers: Offer[];
   offer1: Offer;
+  offer1SubmitError = null;
+  offer1SubmitMessage = null;
   offer2: Offer;
+  offer2SubmitError = null;
+  offer2SubmitMessage = null;
   offer3: Offer;
+  offer3SubmitError = null;
+  offer3SubmitMessage = null;
 
   constructor(private service: HyperLedgerService) { }
 
@@ -21,6 +27,7 @@ export class OfferComponent implements OnInit {
     this.offer1 = this.createOffer1();
     this.offer2 = this.createOffer2();
     this.offer3 = this.createOffer3();
+    this.deleteOffers();
   }
 
   createOffer1(): Offer {
@@ -34,7 +41,12 @@ export class OfferComponent implements OnInit {
 
   saveOffer1() {
     this.service.saveOffer(this.offer1).subscribe(data => {
-      this.offers.push(this.offer1);
+      this.offer1SubmitError = null;
+      this.offer1SubmitMessage = "Offer accepted";
+      this.offers.push(this.offer1);      
+    }, error => {
+      this.offer1SubmitError = 'Submiting period expired. Offer rejected!';
+      this.offer1SubmitMessage = null;
     });
   }
 
@@ -49,7 +61,12 @@ export class OfferComponent implements OnInit {
 
   saveOffer2() {
     this.service.saveOffer(this.offer2).subscribe(data => {
+      this.offer2SubmitError = null;
+      this.offer2SubmitMessage = "Offer accepted";
       this.offers.push(this.offer2);
+    }, error => {
+      this.offer2SubmitError = 'Submiting period expired. Offer rejected!';
+      this.offer2SubmitMessage = null;
     });
   }
 
@@ -64,7 +81,12 @@ export class OfferComponent implements OnInit {
 
   saveOffer3() {
     this.service.saveOffer(this.offer3).subscribe(data => {
+      this.offer3SubmitError = null;
+      this.offer3SubmitMessage = "Offer accepted";
       this.offers.push(this.offer3);
+    }, error => {
+      this.offer3SubmitError = 'Submiting period expired. Offer rejected!';
+      this.offer3SubmitMessage = null;
     });
   }
 
@@ -79,6 +101,11 @@ export class OfferComponent implements OnInit {
     discloseOffer.privateKey = 'DSA@!#SDASDQWDQWSDZC@$@!#12312321das';
     this.service.discloseOffer(discloseOffer).subscribe(data => {
       this.offer1.privateKey = data.privateKey;
+      this.offer1SubmitError = null;
+      this.offer1SubmitMessage = "Decryption key accepted";
+    }, error => {
+      this.offer1SubmitError = 'Submiting period expired. Decryption key rejected!';
+      this.offer1SubmitMessage = null;
     });
   }
 
@@ -88,6 +115,11 @@ export class OfferComponent implements OnInit {
     discloseOffer.privateKey = 'DSA@!#SDASDQWDQWSDZC@$@!#12312321das';
     this.service.discloseOffer(discloseOffer).subscribe(data => {
       this.offer2.privateKey = data.privateKey;
+      this.offer2SubmitError = null;
+      this.offer2SubmitMessage = "Decryption key accepted";
+    }, error => {
+      this.offer2SubmitError = 'Submiting period expired. Decryption key rejected!';
+      this.offer2SubmitMessage = null;
     });
   }
 
@@ -97,6 +129,11 @@ export class OfferComponent implements OnInit {
     discloseOffer.privateKey = 'DSA@!#SDASDQWDQWSDZC@$@!#12312321das';
     this.service.discloseOffer(discloseOffer).subscribe(data => {
       this.offer3.privateKey = data.privateKey;
+      this.offer3SubmitError = null;
+      this.offer3SubmitMessage = "Decryption key accepted";
+    }, error => {
+      this.offer3SubmitError = 'Submiting period expired. Decryption key rejected!';
+      this.offer3SubmitMessage = null;
     });
   }
 

@@ -3,6 +3,11 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { HyperLedgerService } from '../services';
 import { Condition } from '../models/condition';
+import { Observable } from "rxjs/Observable";
+
+import 'rxjs/add/observable/timer'
+import 'rxjs/add/operator/map'
+import 'rxjs/add/operator/take'
 
 @Component({
   selector: 'app-conditions',
@@ -24,6 +29,9 @@ export class ConditionsComponent implements OnInit {
 
   conditionForm: FormGroup;
   currentCondition: Condition;
+
+  countDown;
+  counter = 60;
 
   constructor(private fb: FormBuilder,
               private service: HyperLedgerService) { }
@@ -54,6 +62,9 @@ export class ConditionsComponent implements OnInit {
 
     this.service.saveCondition(formModel, this.currentCondition).subscribe(data => {
       this.currentCondition = data;
+      this.countDown = Observable.timer(0,1000)
+      .take(this.counter)
+      .map(() => --this.counter);
     });
   }
 

@@ -18,6 +18,12 @@
       </div>
       <button (click)="saveOffer1()" class="btn btn-success">Save</button>
       <button (click)="discloseOffer1()" class="btn btn-success">Decrypt Offer</button>
+      <div class="alert alert-danger" *ngIf="offer1SubmitError">
+        <strong>{{offer1SubmitError}}</strong>
+      </div>
+      <div class="alert alert-info" *ngIf="offer1SubmitMessage">
+        <strong>{{offer1SubmitMessage}}</strong>
+      </div>
     </div>
 
     <br>
@@ -37,6 +43,12 @@
       </div>
       <button (click)="saveOffer2()" class="btn btn-success">Save</button>
       <button (click)="discloseOffer2()" class="btn btn-success">Decrypt Offer</button>
+      <div class="alert alert-danger" *ngIf="offer2SubmitError">
+        <strong>{{offer2SubmitError}}</strong>
+      </div>
+      <div class="alert alert-info" *ngIf="offer2SubmitMessage">
+        <strong>{{offer2SubmitMessage}}</strong>
+      </div>
     </div>
 
     <br>
@@ -56,6 +68,12 @@
       </div>
       <button (click)="saveOffer3()" class="btn btn-success">Save</button>
       <button (click)="discloseOffer3()" class="btn btn-success">Decrypt Offer</button>
+      <div class="alert alert-danger" *ngIf="offer3SubmitError">
+        <strong>{{offer3SubmitError}}</strong>
+      </div>
+      <div class="alert alert-info" *ngIf="offer3SubmitMessage">
+        <strong>{{offer3SubmitMessage}}</strong>
+      </div>
     </div>
 
     <br>

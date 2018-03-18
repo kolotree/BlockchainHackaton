@@ -27,9 +27,9 @@ export class ParticipantsComponent implements OnInit {
   constructor(private participantService: ParticipantService) { }
 
   ngOnInit() {
-    this.participants.push(new Participant('p1', 'Asus'));
-    this.participants.push(new Participant('p2', 'Apple'));
-    this.participants.push(new Participant('p3', 'HP'));
+    this.participants.push(new Participant('1', 'Asus'));
+    this.participants.push(new Participant('2', 'Apple'));
+    this.participants.push(new Participant('3', 'HP'));
   }
 
   addParticipant(participant: Participant) {
@@ -47,9 +47,9 @@ export class ParticipantsComponent implements OnInit {
   }
 
   deleteAll() {
-    this.deleteSingle('p1');
-    this.deleteSingle('p2');
-    this.deleteSingle('p3');
+    this.deleteSingle('1');
+    this.deleteSingle('2');
+    this.deleteSingle('3');
   }
 
   deleteSingle(id: String) {
