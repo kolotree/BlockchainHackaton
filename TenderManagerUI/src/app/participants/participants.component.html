@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <th>Participant ID</th>
+    <th>Participant Name</th>
+    <th></th>
+  </tr>
+  <tr *ngFor='let participant of participants'>
+    <td>{{participant.participientId }}</td>
+    <td>{{participant.name }}</td>
+    <td><button [disabled]='isDisabled(participant.participientId)' type="button" class="btn btn-btn-primary" (click)="addParticipant(participant)">Add participant</button></td>    
+  </tr>
+</table>
+<button type="button" class="btn btn-btn-primary" (click)="deleteAll()">Delete all</button>   
+

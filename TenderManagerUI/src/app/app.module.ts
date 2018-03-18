@@ -9,14 +9,17 @@ import { ConditionsComponent } from './conditions/conditions.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrganizersComponent } from './organizers/organizers.component';
 import { OrganizerService } from './organizers/organizer.service';
+import { ParticipantService } from './participants/participant.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ParticipantsComponent } from './participants/participants.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     OfferListComponent,
     ConditionsComponent,
-    OrganizersComponent
+    OrganizersComponent,
+    ParticipantsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
       { path: '**', redirectTo: '', pathMatch: 'full' }
     ])
   ],
-  providers: [OrganizerService],
+  providers: [OrganizerService, ParticipantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
