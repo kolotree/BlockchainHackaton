@@ -1,11 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Participant } from './participant.model';
 import { ParticipantService } from './participant.service';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-participants',
   templateUrl: './participants.component.html',
-  styleUrls: ['./participants.component.css']
+  styleUrls: ['./participants.component.css'],
+  animations: [
+    trigger('flyIn', [
+        state('in', style({opacity: 1}), {params: {delay: 0}}),
+        transition('void => *', [
+          style({
+            opacity: 0
+          }),
+          animate('0.7s ease-in')
+        ])
+    ])
+  ]
 })
 export class ParticipantsComponent implements OnInit {
 
