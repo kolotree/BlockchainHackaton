@@ -1,14 +1,24 @@
-<table>
-  <tr>
-    <th>Participant ID</th>
-    <th>Participant Name</th>
-    <th></th>
-  </tr>
-  <tr *ngFor='let participant of participants'>
-    <td>{{participant.participientId }}</td>
-    <td>{{participant.name }}</td>
-    <td><button [disabled]='isDisabled(participant.participientId)' type="button" class="btn btn-btn-primary" (click)="addParticipant(participant)">Add participant</button></td>    
-  </tr>
-</table>
-<button type="button" class="btn btn-btn-primary" (click)="deleteAll()">Delete all</button>   
-
+<div class="col-md-5 offset-md-0 col-sm-8 offset-sm-2 col-12 list-container" [@flyIn]="{value: 'in', params: {delay: 0.3}}">
+  <div class="list-container-inner">
+    <div class="col-12 list-header">
+      <h3>Participants</h3>
+    </div>
+    <div class="col-12">
+      <table class="table">
+        <tr>
+          <th>Participant ID</th>
+          <th>Participant Name</th>
+          <th></th>
+        </tr>
+        <tr *ngFor='let participant of participants'>
+          <td>{{participant.participientId }}</td>
+          <td>{{participant.name }}</td>
+          <td>
+            <button [disabled]='isDisabled(participant.participientId)' type="button" class="btn btn-success" (click)="addParticipant(participant)">Add participant</button>
+          </td>
+        </tr>
+      </table>
+      <button type="button" class="btn btn-success" (click)="deleteAll()">Delete all</button>
+    </div>
+  </div>
+</div>

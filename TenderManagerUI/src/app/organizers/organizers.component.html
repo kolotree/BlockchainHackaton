@@ -1,10 +1,19 @@
-<table>
-  <tr>
-    <th>Organizer ID</th>
-    <th>Organizer Name</th>    
-  </tr>
-  <tr *ngFor='let organizer of organizers'>
-    <td>{{ organizer.organizerId }}</td>
-    <td>{{ organizer.name }}</td>
-  </tr>
-</table>
+<div class="col-md-5 offset-md-1 col-sm-8 offset-sm-2 col-12 list-container" [@flyIn]="{value: 'in', params: {delay: 0.3}}">
+  <div class="list-container-inner">
+    <div class="col-12 list-header">
+      <h3>Organizer</h3>
+    </div>
+    <div class="col-12">
+      <table class="table">
+        <tr>
+          <th>Organizer ID</th>
+          <th>Organizer Name</th>
+        </tr>
+        <tr *ngFor='let organizer of organizers'>
+          <td>{{ organizer.organizerId }}</td>
+          <td>{{ organizer.name }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
